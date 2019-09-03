@@ -1,0 +1,36 @@
+<body>
+  <h3>Naming a local variable that normalises a function param</h3>
+  <h4>Date: 3 sept 2019</h4>
+  <p>
+    Consider the following sudo code sample
+  </p>
+    <pre>
+      // Option 1
+      function init(number userId) {
+        userId = userIdOk(userId) ? userId : "someDefaultId"
+        setupAccount(userId);
+      }
+
+
+      // Option 2
+      function init(number userId) {
+        String normalisedUserId = userIdOk(userId) ? userId : "someDefaultId"
+        setupAccount(normalisedUserId);
+      }
+    </pre>
+    <p>
+      My aim is to check if the <b>userId</b> value is ok, if its not then assign a default id before calling the <b>setupAccount</b>.
+    </p>
+    <p>
+      In option 1, I reassign the value of the param <b>userId</b> if its not ok, where as in option 2, I create a new local variable called
+      <b>normalisedUserId</b> to store it.
+    </p>
+    <p>
+      Pros and Cons<br>
+      Generally programmars avoid mutating function param value for easy code readability (google it), But option 1, I am reassigning
+      <b>userId</b> to another value (a form of mutation). In option 2, I create a new local variable instead of mutating the param. But the problem
+      with option 2 is I have to give a new name to the variable <b>userId</b>, hence I have to come up with a new variable name called <b>normalisedUserId</b>.
+    </p>
+    <p>After carefull consideration I went with option 1 for its brevity of having no new variables which might confuse the existing variables.</p>
+    <p>Note: In this case, the function is small and except the default check in no other place is the <b>userId</b> mutated. Different scenarios might require different solutions.</p>
+</body>
